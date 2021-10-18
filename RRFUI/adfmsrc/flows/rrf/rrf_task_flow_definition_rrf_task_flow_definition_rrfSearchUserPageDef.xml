@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31"
+                id="rrf_task_flow_definition_rrf_task_flow_definition_rrfSearchUserPageDef" Package="flows.rrf"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="rrfSearchUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="rrfSearchUser"
+                  IsViewObjectMethod="true" DataControl="RRFAMDataControl"
+                  InstanceName="data.RRFAMDataControl.DssReinstatementRequestFormView1"/>
+  </bindings>
+</pageDefinition>

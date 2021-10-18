@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="queryRrfPageDef"
+                Package="fragments.rrf">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DssReinstatementRequestFormView1" RangeSize="25" DataControl="RRFAMDataControl"
+              id="DssReinstatementRequestFormView1Iterator"/>
+    <searchRegion Criteria="DssReinstatementRequestFormViewCriteria"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="DssReinstatementRequestFormView1Iterator" id="DssReinstatementRequestFormViewCriteriaQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="DssReinstatementRequestFormView1Iterator" id="DssReinstatementRequestFormView1">
+      <nodeDefinition DefName="pqt.dss.rrf.model.vo.DssReinstatementRequestFormView"
+                      Name="DssReinstatementRequestFormView10">
+        <AttrNames>
+          <Item Value="RrfIdPk"/>
+          <Item Value="RrfDocNo"/>
+          <Item Value="AgentCode"/>
+          <Item Value="AgentName"/>
+          <Item Value="MgrAgentName"/>
+          <Item Value="UlNo"/>
+          <Item Value="WorkflowStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="DeleteCommit" RequiresUpdateModel="true" Action="invokeMethod" MethodName="DeleteCommit"
+                  IsViewObjectMethod="false" DataControl="RRFAMDataControl"
+                  InstanceName="data.RRFAMDataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>
