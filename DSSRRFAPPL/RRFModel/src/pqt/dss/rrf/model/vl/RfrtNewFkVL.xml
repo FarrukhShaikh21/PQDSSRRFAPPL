@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RfrtNewFkVL"
+  Version="12.2.1.0.31"
+  InheritPersonalization="merge"
+  EntityAssociation="pqt.dss.rrf.model.asc.RrfFkAssoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="pqt.dss.rrf.model.vl.RfrtNewFkVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="DssReinstatementRequestFormView"
+    Cardinality="1"
+    Source="true"
+    Owner="pqt.dss.rrf.model.vo.DssReinstatementRequestFormView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DssReinstatementRequestFormView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.rrf.model.vo.DssReinstatementRequestFormView.RrfIdPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="DssReinstatementNewHiringView"
+    Cardinality="-1"
+    Owner="pqt.dss.rrf.model.vo.DssReinstatementNewHiringView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="DssReinstatementNewHiringView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="pqt.dss.rrf.model.vo.DssReinstatementNewHiringView.RrfIdFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="pqt.dss.rrf.model.RRFModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

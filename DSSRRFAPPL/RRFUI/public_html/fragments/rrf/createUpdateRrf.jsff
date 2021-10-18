@@ -1,0 +1,522 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.rrfCreateupdateBean.psl1}">
+    <f:facet name="center">
+      <af:panelHeader text="Create / update page" id="ph1" binding="#{backingBeanScope.rrfCreateupdateBean.ph1}">
+        <f:facet name="toolbar">
+          <af:toolbar id="t1" binding="#{backingBeanScope.rrfCreateupdateBean.t1}">
+            <af:group id="g1" binding="#{backingBeanScope.rrfCreateupdateBean.g1}">
+              <af:button text="Back to Query" id="b1" immediate="true" action="backQuery"
+                         binding="#{backingBeanScope.rrfCreateupdateBean.b1}"/>
+              <af:button text="Save Record" id="b2" binding="#{backingBeanScope.rrfCreateupdateBean.b2}"
+                         action="#{backingBeanScope.rrfCreateupdateBean.b2_action}"/>
+            </af:group>
+          </af:toolbar>
+        </f:facet>
+        <af:panelGroupLayout id="pgl1" layout="vertical" binding="#{backingBeanScope.rrfCreateupdateBean.pgl1}">
+          <af:panelFormLayout id="pfl2" rows="12" binding="#{backingBeanScope.rrfCreateupdateBean.pfl2}"
+                              labelWidth="180">
+            <af:panelLabelAndMessage label="#{bindings.RrfDocNo.hints.label}" id="plam1"
+                                     inlineStyle="font-weight:bolder;" labelStyle="font-weight:bolder;"
+                                     binding="#{backingBeanScope.rrfCreateupdateBean.plam1}">
+              <af:outputText value="#{bindings.RrfDocNo.inputValue}" shortDesc="#{bindings.RrfDocNo.hints.tooltip}"
+                             id="ot1" binding="#{backingBeanScope.rrfCreateupdateBean.ot1}"/>
+            </af:panelLabelAndMessage>
+            <af:inputListOfValues id="currentBranchId"
+                                  popupTitle="Search and Select: #{bindings.CurrentBranch.hints.label}"
+                                  value="#{bindings.CurrentBranch.inputValue}"
+                                  label="#{bindings.CurrentBranch.hints.label}"
+                                  model="#{bindings.CurrentBranch.listOfValuesModel}"
+                                  required="#{bindings.CurrentBranch.hints.mandatory}"
+                                  columns="#{bindings.CurrentBranch.hints.displayWidth}"
+                                  shortDesc="#{bindings.CurrentBranch.hints.tooltip}"
+                                  binding="#{backingBeanScope.rrfCreateupdateBean.currentBranchId}"
+                                  disabled="#{bindings.AgentNoFk.inputValue != null}" partialTriggers="ilov1"
+                                  labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.CurrentBranch.validator}"/>
+            </af:inputListOfValues>
+            <af:inputListOfValues id="ilov1" popupTitle="Search and Select: #{bindings.AgentCode.hints.label}"
+                                  value="#{bindings.AgentCode.inputValue}" label="#{bindings.AgentCode.hints.label}"
+                                  model="#{bindings.AgentCode.listOfValuesModel}"
+                                  required="#{bindings.AgentCode.hints.mandatory}"
+                                  columns="#{bindings.AgentCode.hints.displayWidth}"
+                                  shortDesc="#{bindings.AgentCode.hints.tooltip}"
+                                  binding="#{backingBeanScope.rrfCreateupdateBean.ilov1}"
+                                  labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.AgentCode.validator}"/>
+            </af:inputListOfValues>
+            <af:inputText value="#{bindings.AgentName.inputValue}" label="#{bindings.AgentName.hints.label}"
+                          required="#{bindings.AgentName.hints.mandatory}"
+                          columns="#{bindings.AgentName.hints.displayWidth}"
+                          maximumLength="#{bindings.AgentName.hints.precision}"
+                          shortDesc="#{bindings.AgentName.hints.tooltip}" id="it22" disabled="true"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it22}" partialTriggers="ilov1"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.AgentName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.BankAccNo.inputValue}" label="#{bindings.BankAccNo.hints.label}"
+                          required="#{bindings.BankAccNo.hints.mandatory}"
+                          columns="#{bindings.BankAccNo.hints.displayWidth}"
+                          maximumLength="#{bindings.BankAccNo.hints.precision}"
+                          shortDesc="#{bindings.BankAccNo.hints.tooltip}" id="it23" disabled="true"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it23}" partialTriggers="ilov1"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.BankAccNo.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.CurrentDesignation.inputValue}"
+                          label="#{bindings.CurrentDesignation.hints.label}"
+                          required="#{bindings.CurrentDesignation.hints.mandatory}"
+                          columns="#{bindings.CurrentDesignation.hints.displayWidth}"
+                          maximumLength="#{bindings.CurrentDesignation.hints.precision}"
+                          shortDesc="#{bindings.CurrentDesignation.hints.tooltip}" id="it1" disabled="true"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it1}" partialTriggers="ilov1"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.CurrentDesignation.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Status.inputValue}" label="#{bindings.Status.hints.label}"
+                          required="#{bindings.Status.hints.mandatory}" columns="#{bindings.Status.hints.displayWidth}"
+                          maximumLength="#{bindings.Status.hints.precision}"
+                          shortDesc="#{bindings.Status.hints.tooltip}" id="it24" disabled="true"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it24}" partialTriggers="ilov1"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.Status.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.NoOfResignation.inputValue}" label="#{bindings.NoOfResignation.hints.label}"
+                          required="#{bindings.NoOfResignation.hints.mandatory}"
+                          columns="#{bindings.NoOfResignation.hints.displayWidth}"
+                          maximumLength="#{bindings.NoOfResignation.hints.precision}"
+                          shortDesc="#{bindings.NoOfResignation.hints.tooltip}" id="it29"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it29}" disabled="true"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.NoOfResignation.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.NoOfResignation.format}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.NoOfTermination.inputValue}" label="#{bindings.NoOfTermination.hints.label}"
+                          required="#{bindings.NoOfTermination.hints.mandatory}"
+                          columns="#{bindings.NoOfTermination.hints.displayWidth}"
+                          maximumLength="#{bindings.NoOfTermination.hints.precision}"
+                          shortDesc="#{bindings.NoOfTermination.hints.tooltip}" id="it30"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it30}" disabled="true"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.NoOfTermination.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.NoOfTermination.format}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.TerminationDate.inputValue}" label="#{bindings.TerminationDate.hints.label}"
+                          required="#{bindings.TerminationDate.hints.mandatory}"
+                          columns="#{bindings.TerminationDate.hints.displayWidth}"
+                          shortDesc="#{bindings.TerminationDate.hints.tooltip}" id="id1"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.id1}" disabled="true"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.TerminationDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.TerminationDate.format}"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.StartDate.inputValue}" label="#{bindings.StartDate.hints.label}"
+                          required="#{bindings.StartDate.hints.mandatory}"
+                          columns="#{bindings.StartDate.hints.displayWidth}"
+                          shortDesc="#{bindings.StartDate.hints.tooltip}" id="id7" disabled="true"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.id7}" labelStyle="font-weight:bolder;"
+                          contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.StartDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.StartDate.format}"/>
+            </af:inputDate>
+            <af:inputDate value="#{bindings.EndDate.inputValue}" label="#{bindings.EndDate.hints.label}"
+                          required="#{bindings.EndDate.hints.mandatory}"
+                          columns="#{bindings.EndDate.hints.displayWidth}" shortDesc="#{bindings.EndDate.hints.tooltip}"
+                          id="id8" disabled="true" binding="#{backingBeanScope.rrfCreateupdateBean.id8}"
+                          labelStyle="font-weight:bolder;" contentStyle="font-weight:bolder;">
+              <f:validator binding="#{bindings.EndDate.validator}"/>
+              <af:convertDateTime pattern="#{bindings.EndDate.format}"/>
+            </af:inputDate>
+            <af:inputListOfValues id="ilov2"
+                                  popupTitle="Search and Select: #{bindings.DesignationAppliedFor.hints.label}"
+                                  value="#{bindings.DesignationAppliedFor.inputValue}"
+                                  label="#{bindings.DesignationAppliedFor.hints.label}"
+                                  model="#{bindings.DesignationAppliedFor.listOfValuesModel}"
+                                  required="#{bindings.DesignationAppliedFor.hints.mandatory}"
+                                  columns="#{bindings.DesignationAppliedFor.hints.displayWidth}"
+                                  shortDesc="#{bindings.DesignationAppliedFor.hints.tooltip}"
+                                  binding="#{backingBeanScope.rrfCreateupdateBean.ilov2}">
+              <f:validator binding="#{bindings.DesignationAppliedFor.validator}"/>
+            </af:inputListOfValues>
+            <af:inputDate value="#{bindings.EffectiveFrom.inputValue}" label="#{bindings.EffectiveFrom.hints.label}"
+                          required="#{bindings.EffectiveFrom.hints.mandatory}"
+                          columns="#{bindings.EffectiveFrom.hints.displayWidth}"
+                          shortDesc="#{bindings.EffectiveFrom.hints.tooltip}" id="id6"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.id6}">
+              <f:validator binding="#{bindings.EffectiveFrom.validator}"/>
+              <af:convertDateTime pattern="#{bindings.EffectiveFrom.format}"/>
+            </af:inputDate>
+            <af:inputListOfValues id="newBranchId" popupTitle="Search and Select: #{bindings.NewBranch.hints.label}"
+                                  value="#{bindings.NewBranch.inputValue}" label="#{bindings.NewBranch.hints.label}"
+                                  model="#{bindings.NewBranch.listOfValuesModel}"
+                                  required="#{bindings.NewBranch.hints.mandatory}"
+                                  columns="#{bindings.NewBranch.hints.displayWidth}"
+                                  shortDesc="#{bindings.NewBranch.hints.tooltip}"
+                                  binding="#{backingBeanScope.rrfCreateupdateBean.newBranchId}">
+              <f:validator binding="#{bindings.NewBranch.validator}"/>
+            </af:inputListOfValues>
+            <af:inputListOfValues id="mgrCodeId" popupTitle="Search and Select: #{bindings.MgrCode.hints.label}"
+                                  value="#{bindings.MgrCode.inputValue}" label="#{bindings.MgrCode.hints.label}"
+                                  model="#{bindings.MgrCode.listOfValuesModel}"
+                                  required="#{bindings.MgrCode.hints.mandatory}"
+                                  columns="#{bindings.MgrCode.hints.displayWidth}"
+                                  shortDesc="#{bindings.MgrCode.hints.tooltip}"
+                                  binding="#{backingBeanScope.rrfCreateupdateBean.mgrCodeId}">
+              <f:validator binding="#{bindings.MgrCode.validator}"/>
+            </af:inputListOfValues>
+            <af:inputText value="#{bindings.MgrName.inputValue}" label="#{bindings.MgrName.hints.label}"
+                          required="#{bindings.MgrName.hints.mandatory}"
+                          columns="#{bindings.MgrName.hints.displayWidth}"
+                          maximumLength="#{bindings.MgrName.hints.precision}"
+                          shortDesc="#{bindings.MgrName.hints.tooltip}" id="it28"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it28}" disabled="true">
+              <f:validator binding="#{bindings.MgrName.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.UlNo.inputValue}" label="#{bindings.UlNo.hints.label}"
+                          required="#{bindings.UlNo.hints.mandatory}" columns="#{bindings.UlNo.hints.displayWidth}"
+                          maximumLength="#{bindings.UlNo.hints.precision}" shortDesc="#{bindings.UlNo.hints.tooltip}"
+                          id="it25" binding="#{backingBeanScope.rrfCreateupdateBean.it25}">
+              <f:validator binding="#{bindings.UlNo.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.UlNo.format}"/>
+              <af:convertNumber type="number" pattern="#,###.##"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Remarks.inputValue}" label="#{bindings.Remarks.hints.label}"
+                          required="#{bindings.Remarks.hints.mandatory}"
+                          columns="#{bindings.Remarks.hints.displayWidth}"
+                          maximumLength="#{bindings.Remarks.hints.precision}"
+                          shortDesc="#{bindings.Remarks.hints.tooltip}" id="it26" rows="4"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it26}">
+              <f:validator binding="#{bindings.Remarks.validator}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.rrfCreateupdateBean.pfl1}" rows="2" fieldWidth="180"
+                              labelWidth="180">
+            <af:inputText value="#{bindings.QuarterBussPol.inputValue}" label="#{bindings.QuarterBussPol.hints.label}"
+                          required="#{bindings.QuarterBussPol.hints.mandatory}"
+                          columns="#{bindings.QuarterBussPol.hints.displayWidth}"
+                          maximumLength="#{bindings.QuarterBussPol.hints.precision}"
+                          shortDesc="#{bindings.QuarterBussPol.hints.tooltip}" id="it2"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it2}" labelStyle="font-weight:bolder;"
+                          contentStyle="font-weight:bolder;" disabled="true" partialTriggers="ilov1">
+              <f:validator binding="#{bindings.QuarterBussPol.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.QuarterBussPol.format}"/>
+              <af:convertNumber type="number" pattern="#,###.##"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.QuarterBuss.inputValue}" label="#{bindings.QuarterBuss.hints.label}"
+                          required="#{bindings.QuarterBuss.hints.mandatory}"
+                          columns="#{bindings.QuarterBuss.hints.displayWidth}"
+                          maximumLength="#{bindings.QuarterBuss.hints.precision}"
+                          shortDesc="#{bindings.QuarterBuss.hints.tooltip}" id="it3"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it3}" labelStyle="font-weight:bolder;"
+                          contentStyle="font-weight:bolder;" disabled="true" partialTriggers="ilov1">
+              <f:validator binding="#{bindings.QuarterBuss.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.QuarterBuss.format}"/>
+              <af:convertNumber type="number" pattern="#,###.##"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.HalfyearBussPol.inputValue}" label="#{bindings.HalfyearBussPol.hints.label}"
+                          required="#{bindings.HalfyearBussPol.hints.mandatory}"
+                          columns="#{bindings.HalfyearBussPol.hints.displayWidth}"
+                          maximumLength="#{bindings.HalfyearBussPol.hints.precision}"
+                          shortDesc="#{bindings.HalfyearBussPol.hints.tooltip}" id="it4"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it4}" labelStyle="font-weight:bolder;"
+                          contentStyle="font-weight:bolder;" disabled="true" partialTriggers="ilov1">
+              <f:validator binding="#{bindings.HalfyearBussPol.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.HalfyearBussPol.format}"/>
+              <af:convertNumber type="number" pattern="#,###.##"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.HalfyearBuss.inputValue}" label="#{bindings.HalfyearBuss.hints.label}"
+                          required="#{bindings.HalfyearBuss.hints.mandatory}"
+                          columns="#{bindings.HalfyearBuss.hints.displayWidth}"
+                          maximumLength="#{bindings.HalfyearBuss.hints.precision}"
+                          shortDesc="#{bindings.HalfyearBuss.hints.tooltip}" id="it5"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it5}" labelStyle="font-weight:bolder;"
+                          contentStyle="font-weight:bolder;" disabled="true" partialTriggers="ilov1">
+              <f:validator binding="#{bindings.HalfyearBuss.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.HalfyearBuss.format}"/>
+              <af:convertNumber type="number" pattern="#,###.##"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.YearlyBussPol.inputValue}" label="#{bindings.YearlyBussPol.hints.label}"
+                          required="#{bindings.YearlyBussPol.hints.mandatory}"
+                          columns="#{bindings.YearlyBussPol.hints.displayWidth}"
+                          maximumLength="#{bindings.YearlyBussPol.hints.precision}"
+                          shortDesc="#{bindings.YearlyBussPol.hints.tooltip}" id="it21"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it21}" labelStyle="font-weight:bolder;"
+                          contentStyle="font-weight:bolder;" disabled="true" partialTriggers="ilov1">
+              <f:validator binding="#{bindings.YearlyBussPol.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.YearlyBussPol.format}"/>
+              <af:convertNumber type="number" pattern="#,###.##"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.YearlyBuss.inputValue}" label="#{bindings.YearlyBuss.hints.label}"
+                          required="#{bindings.YearlyBuss.hints.mandatory}"
+                          columns="#{bindings.YearlyBuss.hints.displayWidth}"
+                          maximumLength="#{bindings.YearlyBuss.hints.precision}"
+                          shortDesc="#{bindings.YearlyBuss.hints.tooltip}" id="it27"
+                          binding="#{backingBeanScope.rrfCreateupdateBean.it27}" labelStyle="font-weight:bolder;"
+                          contentStyle="font-weight:bolder;" disabled="true" partialTriggers="ilov1">
+              <f:validator binding="#{bindings.YearlyBuss.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.YearlyBuss.format}"/>
+              <af:convertNumber type="number" pattern="#,###.##"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:separator id="s2" binding="#{backingBeanScope.rrfCreateupdateBean.s2}"/>
+          <af:switcher id="s3" binding="#{backingBeanScope.rrfCreateupdateBean.s3}"
+                       facetName="#{bindings.Nlevel.inputValue &lt;= 50 ? 'REGION' : 'NULLREGION'}"
+                       defaultFacet="NULLREGION">
+            <f:facet name="REGION">
+              <af:panelHeader text="Detail of Existing Managers" id="ph2"
+                              rendered="#{bindings.Nlevel.inputValue eq 50 ? false : true}"
+                              binding="#{backingBeanScope.rrfCreateupdateBean.ph2}">
+                <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                    binding="#{backingBeanScope.rrfCreateupdateBean.pc1}">
+                  <f:facet name="toolbar">
+                    <af:toolbar id="t4" binding="#{backingBeanScope.rrfCreateupdateBean.t4}">
+                      <af:button actionListener="#{bindings.CreateInsert.execute}" text="New Record"
+                                 disabled="#{!bindings.CreateInsert.enabled}" id="b3"
+                                 binding="#{backingBeanScope.rrfCreateupdateBean.b3}"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table value="#{bindings.DssReinstatementExistMgrView1.collectionModel}" var="row"
+                            rows="#{bindings.DssReinstatementExistMgrView1.rangeSize}"
+                            emptyText="#{bindings.DssReinstatementExistMgrView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.DssReinstatementExistMgrView1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.DssReinstatementExistMgrView1.collectionModel.makeCurrent}"
+                            rowSelection="single" fetchSize="#{bindings.DssReinstatementExistMgrView1.rangeSize}"
+                            id="t2" partialTriggers="::t4 ::b3" binding="#{backingBeanScope.rrfCreateupdateBean.t2}">
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.ExistMgrIdPk.label}" id="c1"
+                               rendered="false">
+                      <af:inputText value="#{row.bindings.ExistMgrIdPk.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.ExistMgrIdPk.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.ExistMgrIdPk.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.ExistMgrIdPk.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementExistMgrView1.hints.ExistMgrIdPk.precision}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.ExistMgrIdPk.tooltip}"
+                                    id="it6">
+                        <f:validator binding="#{row.bindings.ExistMgrIdPk.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.DssReinstatementExistMgrView1.hints.ExistMgrIdPk.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.Code.label}" id="c2">
+                      <af:inputText value="#{row.bindings.Code.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.Code.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.Code.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.Code.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementExistMgrView1.hints.Code.precision}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.Code.tooltip}" id="it7">
+                        <f:validator binding="#{row.bindings.Code.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.MgrName.label}" id="c3">
+                      <af:inputText value="#{row.bindings.MgrName.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.MgrName.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.MgrName.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.MgrName.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementExistMgrView1.hints.MgrName.precision}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.MgrName.tooltip}"
+                                    id="it8">
+                        <f:validator binding="#{row.bindings.MgrName.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.Designation.label}" id="c4">
+                      <af:inputText value="#{row.bindings.Designation.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.Designation.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.Designation.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.Designation.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementExistMgrView1.hints.Designation.precision}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.Designation.tooltip}"
+                                    id="it9">
+                        <f:validator binding="#{row.bindings.Designation.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.Doj.label}" id="c5">
+                      <af:inputDate value="#{row.bindings.Doj.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.Doj.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.Doj.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.Doj.displayWidth}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.Doj.tooltip}" id="id4">
+                        <f:validator binding="#{row.bindings.Doj.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.DssReinstatementExistMgrView1.hints.Doj.format}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.DsfStrength.label}" id="c6">
+                      <af:inputText value="#{row.bindings.DsfStrength.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.DsfStrength.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.DsfStrength.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.DsfStrength.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementExistMgrView1.hints.DsfStrength.precision}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.DsfStrength.tooltip}"
+                                    id="it10">
+                        <f:validator binding="#{row.bindings.DsfStrength.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.AchievedCases.label}" id="c7">
+                      <af:inputText value="#{row.bindings.AchievedCases.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.AchievedCases.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.AchievedCases.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.AchievedCases.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementExistMgrView1.hints.AchievedCases.precision}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.AchievedCases.tooltip}"
+                                    id="it11">
+                        <f:validator binding="#{row.bindings.AchievedCases.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementExistMgrView1.hints.AchievedContribution.label}"
+                               id="c8" width="120">
+                      <af:inputText value="#{row.bindings.AchievedContribution.inputValue}"
+                                    label="#{bindings.DssReinstatementExistMgrView1.hints.AchievedContribution.label}"
+                                    required="#{bindings.DssReinstatementExistMgrView1.hints.AchievedContribution.mandatory}"
+                                    columns="#{bindings.DssReinstatementExistMgrView1.hints.AchievedContribution.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementExistMgrView1.hints.AchievedContribution.precision}"
+                                    shortDesc="#{bindings.DssReinstatementExistMgrView1.hints.AchievedContribution.tooltip}"
+                                    id="it12">
+                        <f:validator binding="#{row.bindings.AchievedContribution.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column id="c18" headerText="Delete" align="center">
+                      <af:link id="l2" icon="/images/deleteicon_enabled.gif"
+                               actionListener="#{bindings.Delete1.execute}" disabled="#{!bindings.Delete1.enabled}"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelHeader>
+              <af:separator id="s1" binding="#{backingBeanScope.rrfCreateupdateBean.s1}"/>
+              <af:panelHeader text="New Hiring" id="ph3" rendered="#{bindings.Nlevel.inputValue eq 50 ? false : true}"
+                              binding="#{backingBeanScope.rrfCreateupdateBean.ph3}">
+                <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                    binding="#{backingBeanScope.rrfCreateupdateBean.pc2}">
+                  <f:facet name="toolbar">
+                    <af:toolbar id="t5" binding="#{backingBeanScope.rrfCreateupdateBean.t5}">
+                      <af:button actionListener="#{bindings.CreateInsert1.execute}" text="New Record"
+                                 disabled="#{!bindings.CreateInsert1.enabled}" id="b4"
+                                 binding="#{backingBeanScope.rrfCreateupdateBean.b4}"/>
+                    </af:toolbar>
+                  </f:facet>
+                  <af:table value="#{bindings.DssReinstatementNewHiringView1.collectionModel}" var="row"
+                            rows="#{bindings.DssReinstatementNewHiringView1.rangeSize}"
+                            emptyText="#{bindings.DssReinstatementNewHiringView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            rowBandingInterval="0"
+                            selectedRowKeys="#{bindings.DssReinstatementNewHiringView1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.DssReinstatementNewHiringView1.collectionModel.makeCurrent}"
+                            rowSelection="single" fetchSize="#{bindings.DssReinstatementNewHiringView1.rangeSize}"
+                            id="t3" partialTriggers="::t5 ::b4 :::b2 :::pc1:b3"
+                            binding="#{backingBeanScope.rrfCreateupdateBean.t3}">
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.NewHiringIdPk.label}" id="c9"
+                               rendered="false">
+                      <af:inputText value="#{row.bindings.NewHiringIdPk.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.NewHiringIdPk.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.NewHiringIdPk.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.NewHiringIdPk.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.NewHiringIdPk.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.NewHiringIdPk.tooltip}"
+                                    id="it13">
+                        <f:validator binding="#{row.bindings.NewHiringIdPk.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.DssReinstatementNewHiringView1.hints.NewHiringIdPk.format}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.MonthDate.label}" id="c10">
+                      <af:inputDate value="#{row.bindings.MonthDate.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.MonthDate.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.MonthDate.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.MonthDate.displayWidth}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.MonthDate.tooltip}"
+                                    id="id5">
+                        <f:validator binding="#{row.bindings.MonthDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.DssReinstatementNewHiringView1.hints.MonthDate.format}"/>
+                      </af:inputDate>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.Consultants.label}" id="c11">
+                      <af:inputText value="#{row.bindings.Consultants.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.Consultants.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.Consultants.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.Consultants.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.Consultants.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.Consultants.tooltip}"
+                                    id="it14">
+                        <f:validator binding="#{row.bindings.Consultants.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.TeamLeader.label}" id="c12">
+                      <af:inputText value="#{row.bindings.TeamLeader.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.TeamLeader.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.TeamLeader.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.TeamLeader.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.TeamLeader.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.TeamLeader.tooltip}"
+                                    id="it15">
+                        <f:validator binding="#{row.bindings.TeamLeader.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.Abuhs.label}" id="c13">
+                      <af:inputText value="#{row.bindings.Abuhs.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.Abuhs.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.Abuhs.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.Abuhs.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.Abuhs.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.Abuhs.tooltip}"
+                                    id="it16">
+                        <f:validator binding="#{row.bindings.Abuhs.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.Buhs.label}" id="c14">
+                      <af:inputText value="#{row.bindings.Buhs.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.Buhs.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.Buhs.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.Buhs.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.Buhs.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.Buhs.tooltip}" id="it17">
+                        <f:validator binding="#{row.bindings.Buhs.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.Producers.label}" id="c15">
+                      <af:inputText value="#{row.bindings.Producers.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.Producers.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.Producers.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.Producers.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.Producers.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.Producers.tooltip}"
+                                    id="it18">
+                        <f:validator binding="#{row.bindings.Producers.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.Cases.label}" id="c16">
+                      <af:inputText value="#{row.bindings.Cases.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.Cases.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.Cases.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.Cases.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.Cases.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.Cases.tooltip}"
+                                    id="it19">
+                        <f:validator binding="#{row.bindings.Cases.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column headerText="#{bindings.DssReinstatementNewHiringView1.hints.Contribution.label}"
+                               id="c17">
+                      <af:inputText value="#{row.bindings.Contribution.inputValue}"
+                                    label="#{bindings.DssReinstatementNewHiringView1.hints.Contribution.label}"
+                                    required="#{bindings.DssReinstatementNewHiringView1.hints.Contribution.mandatory}"
+                                    columns="#{bindings.DssReinstatementNewHiringView1.hints.Contribution.displayWidth}"
+                                    maximumLength="#{bindings.DssReinstatementNewHiringView1.hints.Contribution.precision}"
+                                    shortDesc="#{bindings.DssReinstatementNewHiringView1.hints.Contribution.tooltip}"
+                                    id="it20">
+                        <f:validator binding="#{row.bindings.Contribution.validator}"/>
+                      </af:inputText>
+                    </af:column>
+                    <af:column id="c19" align="center" headerText="Delete">
+                      <af:link id="l1" icon="/images/deleteicon_enabled.gif" actionListener="#{bindings.Delete.execute}"
+                               disabled="#{!bindings.Delete.enabled}"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelHeader>
+            </f:facet>
+            <f:facet name="NULLREGION"/>
+          </af:switcher>
+        </af:panelGroupLayout>
+      </af:panelHeader>
+    </f:facet>
+  </af:panelStretchLayout>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:rrfCreateupdateBean-->
+</ui:composition>
