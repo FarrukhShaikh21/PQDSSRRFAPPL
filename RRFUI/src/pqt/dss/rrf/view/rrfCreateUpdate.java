@@ -2,6 +2,7 @@ package pqt.dss.rrf.view;
 
 import javax.faces.application.FacesMessage;
 
+import javax.faces.component.UISelectItems;
 import javax.faces.context.FacesContext;
 
 import oracle.adf.model.BindingContext;
@@ -11,6 +12,7 @@ import oracle.adf.view.rich.component.rich.data.RichTable;
 import oracle.adf.view.rich.component.rich.input.RichInputDate;
 import oracle.adf.view.rich.component.rich.input.RichInputListOfValues;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
+import oracle.adf.view.rich.component.rich.input.RichSelectOneChoice;
 import oracle.adf.view.rich.component.rich.layout.RichPanelFormLayout;
 import oracle.adf.view.rich.component.rich.layout.RichPanelGroupLayout;
 import oracle.adf.view.rich.component.rich.layout.RichPanelHeader;
@@ -78,6 +80,11 @@ public class rrfCreateUpdate {
     private RichInputText it28;
     private RichInputText it29;
     private RichInputText it30;
+    private RichSelectOneChoice soc1;
+    private UISelectItems si1;
+    private RichPanelGroupLayout pgl2;
+    private RichOutputText ot2;
+    private RichOutputText ot3;
 
     public rrfCreateUpdate() {
     }
@@ -503,5 +510,45 @@ public class rrfCreateUpdate {
 
     public RichInputText getIt30() {
         return it30;
+    }
+
+    public void setSoc1(RichSelectOneChoice soc1) {
+        this.soc1 = soc1;
+    }
+
+    public RichSelectOneChoice getSoc1() {
+        return soc1;
+    }
+
+    public void setSi1(UISelectItems si1) {
+        this.si1 = si1;
+    }
+
+    public UISelectItems getSi1() {
+        return si1;
+    }
+
+    public void setPgl2(RichPanelGroupLayout pgl2) {
+        this.pgl2 = pgl2;
+    }
+
+    public RichPanelGroupLayout getPgl2() {
+        return pgl2;
+    }
+
+    public void setOt2(RichOutputText ot2) {
+        this.ot2 = ot2;
+    }
+
+    public RichOutputText getOt2() {
+        return ot2;
+    }
+
+    public void setOt3(RichOutputText ot3) {
+        this.ot3 = ot3;
+    }
+
+    public RichOutputText getOt3() {
+        return ot3;
     }
 }

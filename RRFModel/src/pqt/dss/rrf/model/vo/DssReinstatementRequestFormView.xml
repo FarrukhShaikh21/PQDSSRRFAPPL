@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="DssReinstatementRequestFormView"
-  Version="12.2.1.0.31"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -100,6 +100,10 @@
   <ViewAccessor
     Name="AgentDtlLovVo1"
     ViewObjectName="pqt.dss.rrf.model.lov.AgentDtlLovVo"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationLov"
+    ViewObjectName="pqt.dss.rrf.model.lov.LocationLov"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_DesignationAppliedFor"
@@ -257,116 +261,136 @@
     <DisplayCriteria
       Name="AgentDtlLovVoCriteria"/>
   </ListBinding>
-  <SQLQuery><![CDATA[SELECT DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK,                     
-       DSSREINSTATEMENTREQUESTFORM.BANK_ACC_NO,                     
-       DSSREINSTATEMENTREQUESTFORM.CURRENT_RANK_CODE_FK,                     
-       DSSREINSTATEMENTREQUESTFORM.EFFECTIVE_FROM,                     
-       DSSREINSTATEMENTREQUESTFORM.END_DATE,                     
-       DSSREINSTATEMENTREQUESTFORM.ENTER_DATE,                     
-       DSSREINSTATEMENTREQUESTFORM.LAST_UPDATED_BY,                     
-       DSSREINSTATEMENTREQUESTFORM.LAST_UPDATED_DATE,                     
-       DSSREINSTATEMENTREQUESTFORM.NEW_RANK_CODE_FK,                     
-       DSSREINSTATEMENTREQUESTFORM.REMARKS,                     
-       DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK,                     
-       DSSREINSTATEMENTREQUESTFORM.RRF_ID_PK,                     
-       DSSREINSTATEMENTREQUESTFORM.START_DATE,                     
-       DSSREINSTATEMENTREQUESTFORM.STATUS,                     
-       DSSREINSTATEMENTREQUESTFORM.UL_NO,                     
-       DSSREINSTATEMENTREQUESTFORM.USER_ID_FK,                     
-       DSSREINSTATEMENTREQUESTFORM.DSS_STATUS,                     
-       DSSREINSTATEMENTREQUESTFORM.BRANCH_STATUS,                     
-       DSSREINSTATEMENTREQUESTFORM.DSS_NOTIF_ID_FK,                     
-       DSSREINSTATEMENTREQUESTFORM.BRANCH_NOTIF_ID_FK,                     
-       DSSREINSTATEMENTREQUESTFORM.Curr_Branch_Code_Fk,                     
-       DSSREINSTATEMENTREQUESTFORM.New_Branch_Code_Fk,              
-       DSSREINSTATEMENTREQUESTFORM.Rrf_Doc_No, 
-       DSSREINSTATEMENTREQUESTFORM.WORKFLOW_STATUS, 
-       DSSREINSTATEMENTREQUESTFORM.WORKFLOW_NOTIFICATION_ID,              
-       (SELECT AG.V_AGENT_CODE                     
-          FROM DSS_TERMINATED_AGENT_VIEW AG                     
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) AGENT_CODE,                     
-       (SELECT AG.AGENT_NAME                     
-          FROM DSS_TERMINATED_AGENT_VIEW AG                     
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) AGENT_NAME,            
-         (SELECT AG.N_POLICIES                    
-          FROM DSS_TERMINATED_AGENT_VIEW AG                    
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusPolicy,            
-         (SELECT AG.N_ISS_CON                    
-          FROM DSS_TERMINATED_AGENT_VIEW AG                    
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusIssueCont,            
-         (SELECT AG.N_ISS_TOP                    
-          FROM DSS_TERMINATED_AGENT_VIEW AG                    
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusIssueTop,          
-         (SELECT AG.TOTAL_CONT                   
-          FROM DSS_TERMINATED_AGENT_VIEW AG                    
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) TOTAL_CONT,        
-         (SELECT ag.n_cq_bus_pol                               
+  <ListBinding
+    Name="LOV_GisLocationIdFk"
+    ListVOName="LocationLov"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="GisLocationIdFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IlLocIdPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Location"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[SELECT DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK,                        
+       DSSREINSTATEMENTREQUESTFORM.BANK_ACC_NO,                        
+       DSSREINSTATEMENTREQUESTFORM.CURRENT_RANK_CODE_FK,                        
+       DSSREINSTATEMENTREQUESTFORM.EFFECTIVE_FROM,                        
+       DSSREINSTATEMENTREQUESTFORM.END_DATE,                        
+       DSSREINSTATEMENTREQUESTFORM.ENTER_DATE,                        
+       DSSREINSTATEMENTREQUESTFORM.LAST_UPDATED_BY,                        
+       DSSREINSTATEMENTREQUESTFORM.LAST_UPDATED_DATE,                        
+       DSSREINSTATEMENTREQUESTFORM.NEW_RANK_CODE_FK,                        
+       DSSREINSTATEMENTREQUESTFORM.REMARKS,                        
+       DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK,                        
+       DSSREINSTATEMENTREQUESTFORM.RRF_ID_PK,                        
+       DSSREINSTATEMENTREQUESTFORM.START_DATE,                        
+       DSSREINSTATEMENTREQUESTFORM.STATUS,                        
+       DSSREINSTATEMENTREQUESTFORM.UL_NO,                        
+       DSSREINSTATEMENTREQUESTFORM.USER_ID_FK,                        
+       DSSREINSTATEMENTREQUESTFORM.DSS_STATUS,                        
+       DSSREINSTATEMENTREQUESTFORM.BRANCH_STATUS,                        
+       DSSREINSTATEMENTREQUESTFORM.DSS_NOTIF_ID_FK,                        
+       DSSREINSTATEMENTREQUESTFORM.BRANCH_NOTIF_ID_FK,                        
+       DSSREINSTATEMENTREQUESTFORM.Curr_Branch_Code_Fk,                        
+       DSSREINSTATEMENTREQUESTFORM.New_Branch_Code_Fk,                 
+       DSSREINSTATEMENTREQUESTFORM.Rrf_Doc_No,    
+       DSSREINSTATEMENTREQUESTFORM.WORKFLOW_STATUS,    
+       DSSREINSTATEMENTREQUESTFORM.WORKFLOW_NOTIFICATION_ID,  
+       DSSREINSTATEMENTREQUESTFORM.GIS_LOCATION_ID_FK, 
+       (SELECT AG.V_AGENT_CODE                        
+          FROM DSS_TERMINATED_AGENT_VIEW AG                        
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) AGENT_CODE,                        
+       (SELECT AG.AGENT_NAME                        
+          FROM DSS_TERMINATED_AGENT_VIEW AG                        
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) AGENT_NAME,               
+         (SELECT AG.N_POLICIES                       
+          FROM DSS_TERMINATED_AGENT_VIEW AG                       
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusPolicy,               
+         (SELECT AG.N_ISS_CON                       
+          FROM DSS_TERMINATED_AGENT_VIEW AG                       
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusIssueCont,               
+         (SELECT AG.N_ISS_TOP                       
+          FROM DSS_TERMINATED_AGENT_VIEW AG                       
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusIssueTop,             
+         (SELECT AG.TOTAL_CONT                      
+          FROM DSS_TERMINATED_AGENT_VIEW AG                       
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) TOTAL_CONT,           
+         (SELECT ag.n_cq_bus_pol                                  
+          FROM DSS_TERMINATED_AGENT_VIEW AG                                   
+         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Quarter_buss_pol,             
+         (SELECT ag.n_cq_bus                                  
+          FROM DSS_TERMINATED_AGENT_VIEW AG                                   
+         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Quarter_buss,             
+         (SELECT ag.n_hy_bus_pol                                  
+          FROM DSS_TERMINATED_AGENT_VIEW AG                                   
+         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) HalfYear_buss_pol,             
+          (SELECT ag.n_hy_bus                                  
+          FROM DSS_TERMINATED_AGENT_VIEW AG                                   
+         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) HalfYear_buss,             
+         (SELECT ag.n_yr_bus_pol                                  
+          FROM DSS_TERMINATED_AGENT_VIEW AG                                   
+         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Yearly_buss_pol,             
+         (SELECT ag.n_yr_bus                                  
+          FROM DSS_TERMINATED_AGENT_VIEW AG                                   
+         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Yearly_buss,           
+         (SELECT AG.TRANDATE                       
+          FROM DSS_TERMINATED_AGENT_VIEW AG                       
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusDate,               
+       (SELECT AR.V_DESCRIPTION                        
+          FROM DSS_AGENT_RANK_VIEW AR                        
+         WHERE AR.V_RANK_CODE = DSSREINSTATEMENTREQUESTFORM.NEW_RANK_CODE_FK) DESIGNATION_APPLIED_FOR,          
+         (SELECT AG.D_TERMINATION          
+          FROM DSS_TERMINATED_AGENT_VIEW AG          
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) TERMINATION_DATE,          
+       (SELECT AG.MGR_N_AGENT_NO                        
+          FROM DSS_TERMINATED_AGENT_VIEW AG                        
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) MGR_N_AGENT_NO,                        
+       (SELECT AG.MGR_AGENT_CODE                        
+          FROM DSS_TERMINATED_AGENT_VIEW AG                        
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) MGR_AGENT_CODE,                        
+       (SELECT AG.MGR_AGENT_NAME                        
+          FROM DSS_TERMINATED_AGENT_VIEW AG                        
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) MGR_AGENT_NAME,          
+          (SELECT DISTINCT MG.MGR_N_AGENT_NO                       
+          FROM VU_DSS_RRF_AGENT_VIEW MG                       
+         WHERE MG.MGR_N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK) MGR_N_NO,         
+        (SELECT DISTINCT MG.MGR_AGENT_NAME                       
+          FROM VU_DSS_RRF_AGENT_VIEW MG                      
+         WHERE MG.MGR_N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK) MGR_NAME,        
+         (SELECT DISTINCT MG.MGR_AGENT_CODE                       
+          FROM VU_DSS_RRF_AGENT_VIEW MG                       
+         WHERE MG.MGR_N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK) MGR_CODE,        
+       (SELECT AG.AGENT_RANK                        
+          FROM DSS_TERMINATED_AGENT_VIEW AG                        
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) CURRENT_DESIGNATION,                        
+       (SELECT AR.N_LEVEL                        
+          FROM DSS_AGENT_RANK_VIEW AR                        
+         WHERE AR.V_RANK_CODE = DSSREINSTATEMENTREQUESTFORM.NEW_RANK_CODE_FK) NLEVEL,                      
+         (SELECT AG.V_BRANCH_NAME                                 
           FROM DSS_TERMINATED_AGENT_VIEW AG                                
-         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Quarter_buss_pol,          
-         (SELECT ag.n_cq_bus                               
-          FROM DSS_TERMINATED_AGENT_VIEW AG                                
-         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Quarter_buss,          
-         (SELECT ag.n_hy_bus_pol                               
-          FROM DSS_TERMINATED_AGENT_VIEW AG                                
-         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) HalfYear_buss_pol,          
-          (SELECT ag.n_hy_bus                               
-          FROM DSS_TERMINATED_AGENT_VIEW AG                                
-         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) HalfYear_buss,          
-         (SELECT ag.n_yr_bus_pol                               
-          FROM DSS_TERMINATED_AGENT_VIEW AG                                
-         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Yearly_buss_pol,          
-         (SELECT ag.n_yr_bus                               
-          FROM DSS_TERMINATED_AGENT_VIEW AG                                
-         WHERE Ag.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.Agent_No_Fk) Yearly_buss,        
-         (SELECT AG.TRANDATE                    
-          FROM DSS_TERMINATED_AGENT_VIEW AG                    
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) BusDate,            
-       (SELECT AR.V_DESCRIPTION                     
-          FROM DSS_AGENT_RANK_VIEW AR                     
-         WHERE AR.V_RANK_CODE = DSSREINSTATEMENTREQUESTFORM.NEW_RANK_CODE_FK) DESIGNATION_APPLIED_FOR,       
-         (SELECT AG.D_TERMINATION       
-          FROM DSS_TERMINATED_AGENT_VIEW AG       
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) TERMINATION_DATE,       
-       (SELECT AG.MGR_N_AGENT_NO                     
-          FROM DSS_TERMINATED_AGENT_VIEW AG                     
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) MGR_N_AGENT_NO,                     
-       (SELECT AG.MGR_AGENT_CODE                     
-          FROM DSS_TERMINATED_AGENT_VIEW AG                     
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) MGR_AGENT_CODE,                     
-       (SELECT AG.MGR_AGENT_NAME                     
-          FROM DSS_TERMINATED_AGENT_VIEW AG                     
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) MGR_AGENT_NAME,       
-          (SELECT DISTINCT MG.MGR_N_AGENT_NO                    
-          FROM VU_DSS_RRF_AGENT_VIEW MG                    
-         WHERE MG.MGR_N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK) MGR_N_NO,      
-        (SELECT DISTINCT MG.MGR_AGENT_NAME                    
-          FROM VU_DSS_RRF_AGENT_VIEW MG                   
-         WHERE MG.MGR_N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK) MGR_NAME,     
-         (SELECT DISTINCT MG.MGR_AGENT_CODE                    
-          FROM VU_DSS_RRF_AGENT_VIEW MG                    
-         WHERE MG.MGR_N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.REPORTING_MANAGER_NO_FK) MGR_CODE,     
-       (SELECT AG.AGENT_RANK                     
-          FROM DSS_TERMINATED_AGENT_VIEW AG                     
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) CURRENT_DESIGNATION,                     
-       (SELECT AR.N_LEVEL                     
-          FROM DSS_AGENT_RANK_VIEW AR                     
-         WHERE AR.V_RANK_CODE = DSSREINSTATEMENTREQUESTFORM.NEW_RANK_CODE_FK) NLEVEL,                   
-         (SELECT AG.V_BRANCH_NAME                              
-          FROM DSS_TERMINATED_AGENT_VIEW AG                             
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) CURRENT_BRANCH,                              
-       (SELECT TBR.V_BRANCH_NAME                              
-          FROM VU_DSS_ST_BRANCH TBR                              
-         WHERE TBR.V_BRANCH_CODE = DSSREINSTATEMENTREQUESTFORM.New_Branch_Code_Fk) NEW_BRANCH,         
-       (SELECT TBR.V_BRANCH_NAME         
-          FROM VU_DSS_ST_BRANCH TBR         
-         WHERE TBR.V_BRANCH_CODE =         
-               DSSREINSTATEMENTREQUESTFORM.CURR_BRANCH_CODE_FK) USER_BRANCH,  
-       (SELECT AG.NO_ACTION_TERMINATION  
-          FROM DSS_TERMINATED_AGENT_VIEW AG  
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) NO_OF_TERMINATION,  
-       (SELECT AG.NO_ACTION_RESIGNATION  
-          FROM DSS_TERMINATED_AGENT_VIEW AG  
-         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) NO_OF_RESIGNATION                     
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) CURRENT_BRANCH,                                 
+       (SELECT TBR.V_BRANCH_NAME                                 
+          FROM VU_DSS_ST_BRANCH TBR                                 
+         WHERE TBR.V_BRANCH_CODE = DSSREINSTATEMENTREQUESTFORM.New_Branch_Code_Fk) NEW_BRANCH,            
+       (SELECT TBR.V_BRANCH_NAME            
+          FROM VU_DSS_ST_BRANCH TBR            
+         WHERE TBR.V_BRANCH_CODE =            
+               DSSREINSTATEMENTREQUESTFORM.CURR_BRANCH_CODE_FK) USER_BRANCH,     
+       (SELECT AG.NO_ACTION_TERMINATION     
+          FROM DSS_TERMINATED_AGENT_VIEW AG     
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) NO_OF_TERMINATION,     
+       (SELECT AG.NO_ACTION_RESIGNATION     
+          FROM DSS_TERMINATED_AGENT_VIEW AG     
+         WHERE AG.N_AGENT_NO = DSSREINSTATEMENTREQUESTFORM.AGENT_NO_FK) NO_OF_RESIGNATION                        
   FROM DSS_REINSTATEMENT_REQUEST_FORM DSSREINSTATEMENTREQUESTFORM]]></SQLQuery>
   <EntityUsage
     Name="DssReinstatementRequestForm"
@@ -574,6 +598,20 @@
     EntityAttrName="WorkflowNotificationId"
     EntityUsage="DssReinstatementRequestForm"
     AliasName="WORKFLOW_NOTIFICATION_ID"/>
+  <ViewAttribute
+    Name="GisLocationIdFk"
+    PrecisionRule="true"
+    EntityAttrName="GisLocationIdFk"
+    EntityUsage="DssReinstatementRequestForm"
+    AliasName="GIS_LOCATION_ID_FK"
+    LOVName="LOV_GisLocationIdFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="AgentCode"
     IsPersistent="false"

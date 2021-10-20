@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="DssReinstatementRequestForm"
-  Version="12.2.1.0.31"
+  Version="12.2.1.11.57"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="DSS_REINSTATEMENT_REQUEST_FORM"
@@ -347,6 +347,13 @@
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="GisLocationIdFk"
+    ColumnName="GIS_LOCATION_ID_FK"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="DSS_REINSTATEMENT_REQUEST_FORM"/>
   <AccessorAttribute
     Name="DssReinstatementExistMgr"
     Association="pqt.dss.rrf.model.asc.RRFHeadToMgr"

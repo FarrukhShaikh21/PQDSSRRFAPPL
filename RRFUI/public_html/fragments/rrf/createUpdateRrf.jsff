@@ -515,6 +515,21 @@
             <f:facet name="NULLREGION"/>
           </af:switcher>
         </af:panelGroupLayout>
+        <f:facet name="context">
+          <af:panelGroupLayout id="pgl2" binding="#{backingBeanScope.rrfCreateupdateBean.pgl2}">
+            <af:outputText value="(" id="ot2" binding="#{backingBeanScope.rrfCreateupdateBean.ot2}"/>
+            <af:selectOneChoice value="#{bindings.GisLocationIdFk.inputValue}" label="#{bindings.GisLocationIdFk.label}"
+                                required="#{bindings.GisLocationIdFk.hints.mandatory}"
+                                shortDesc="#{bindings.GisLocationIdFk.hints.tooltip}" id="soc1"
+                                binding="#{backingBeanScope.rrfCreateupdateBean.soc1}" contentStyle="font-weight:bold"
+                                simple="true" readOnly="true">
+              <f:selectItems value="#{bindings.GisLocationIdFk.items}" id="si1"
+                             binding="#{backingBeanScope.rrfCreateupdateBean.si1}"/>
+              <f:validator binding="#{bindings.GisLocationIdFk.validator}"/>
+            </af:selectOneChoice>
+            <af:outputText value=")" id="ot3" binding="#{backingBeanScope.rrfCreateupdateBean.ot3}"/>
+          </af:panelGroupLayout>
+        </f:facet>
       </af:panelHeader>
     </f:facet>
   </af:panelStretchLayout>
